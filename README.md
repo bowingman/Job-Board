@@ -1,6 +1,13 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template with Chakra-UI.
+
+## Functional Ability
+
+- Sign in and Sign up.
+- Client can post job.
+- Freelancer can post applications for job.
+- Admin can see all jobs and freelancers.
 
 ## Available Scripts
 
