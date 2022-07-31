@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { useAppDispatch } from "../../app/hooks";
@@ -41,6 +42,7 @@ const SignupSchema = Yup.object().shape({
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   return (
     <Flex
@@ -73,8 +75,9 @@ const Signup = () => {
               description: "",
             }}
             validationSchema={SignupSchema}
-            onSubmit={(values) => {
-              dispatch(signupAsync({ ...values }));
+            onSubmit={async (values) => {
+              const data = await dispatch(signupAsync({ ...values }));
+              if (data.type !== "auth/signup/rejected") navigate("/signin");
             }}
           >
             {({ errors, touched }) => (
