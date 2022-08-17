@@ -16,13 +16,30 @@ const MainRoutes = () => {
 
   return currentUser ? (
     <>
-      <Routes>
-        <Route path="/home" element={<div>Welcome to HomePage</div>} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/jobs" element={<Jobs />} />
-        <Route path="/jobs/new" element={<NewJobs />} />
-        <Route path="/jobs/:id" element={<JobDetail />} />
-      </Routes>
+      {currentUser.role === "admin" && (
+        <Routes>
+          <Route path="/home" element={<div>Welcome to HomePage</div>} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/new" element={<NewJobs />} />
+          <Route path="/jobs/:id" element={<JobDetail />} />
+        </Routes>
+      )}
+      {currentUser.role === "user" && (
+        <Routes>
+          <Route path="/home" element={<div>Welcome to HomePage</div>} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:id" element={<JobDetail />} />
+        </Routes>
+      )}
+      {currentUser.role === "client" && (
+        <Routes>
+          <Route path="/home" element={<div>Welcome to HomePage</div>} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/new" element={<NewJobs />} />
+          <Route path="/jobs/:id" element={<JobDetail />} />
+        </Routes>
+      )}
     </>
   ) : (
     <>
